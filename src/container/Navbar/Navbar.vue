@@ -31,7 +31,7 @@
                   <li class="sidebar-item" v-for="categories in getCategories" :key="categories.username">
                     <a @click="getNewCategories" class="sidebar-link">
                       <span class="align-middle">
-                        {{ categories.username }}
+                        {{ categories.NAME }}
                       </span>
                     </a>
                   </li>

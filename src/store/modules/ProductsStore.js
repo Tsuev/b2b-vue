@@ -1,10 +1,15 @@
 export default {
     state: {
-        products: []
+        products: [],
+        activeProducts: []
     },
     mutations: {
         updateStateProducts(state, products){
             state.products = products
+        },
+
+        updateStateActiveProduct(state, activeProduct){
+            state.activeProducts = activeProduct
         }
     },
     actions: {
@@ -13,9 +18,16 @@ export default {
             const products = await response.json()
 
             ctx.commit('updateStateProducts', products)
+        },
+
+        getActiveProduct(ctx, activeProductId){
+            const activeProduct = this.state.products[activeProductId]
+            console.log(activeProduct)
+            ctx.commit('updateStateActiveProduct', activeProduct)
         }
     },
     getters: {
-        viewProducts(state){return state.products}
+        viewProducts(state){return state.products},
+        viewActiveProducts(state){return state.activeProducts}
     }
 }

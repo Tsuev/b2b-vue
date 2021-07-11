@@ -13,7 +13,7 @@
         <p class="card-text">
             {{ title }}
         </p>
-        <a href="#" class="btn btn-primary">Подробнее</a>
+        <a @click="handler" href="#" data-bs-toggle="modal" data-bs-target="#centeredModalPrimary" class="btn btn-primary">Подробнее</a>
       </div>
     </div>
   </div>
@@ -21,7 +21,35 @@
 
 <script>
 export default {
-    props: [ 'id', 'title', 'img' ]
+    data(){
+      return {
+        data: this.arrayData
+      }
+    },
+    props: {
+        title:{
+          type: String,
+          required: true,
+          default: 'Нет информации'
+        }, 
+
+        img:{
+          type: String,
+          default: 'Нет информации'
+        },
+
+        arrayData: {
+          type: Array,
+          default: () => { return [] }
+        } 
+
+      },
+
+      methods:{
+        handler(){
+          this.$emit('handler', this.data)
+        }
+      }
 };
 </script>
 
