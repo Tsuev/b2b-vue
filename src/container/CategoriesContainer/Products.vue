@@ -2,11 +2,10 @@
   <div class="container-fluid p-0">
     <div class="row">
         <ProductCard
-            v-for="(product, index, array) in viewProducts" :key="index"
-            :title="product.title"
-            :img="product.url"
+            v-for="(product, index, array) in viewProducts.data" :key="index"
+            :title="product.NAME"
+            :img="product.image"
             :arrayData="array"
-            @handler="onHandler"
         />
 
     </div>
@@ -24,12 +23,9 @@ export default {
     components: {ProductCard, Modal},
     computed: mapGetters(['viewProducts']),
     methods: {
-      ...mapActions(['getProducts', 'getActiveProduct']),
-      onHandler(data){
-        console.log('ddd',data);
-      }
+      ...mapActions(['getCategoryProducts', 'getActiveProduct']),
     },
-    async mounted(){this.getProducts()}
+    async mounted(){this.getCategoryProducts()}
 }
 </script>
 

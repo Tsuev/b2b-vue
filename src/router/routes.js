@@ -7,11 +7,13 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
+      name: 'home',
       path: '/',
       component: MainPage
     },
     {
-      path: '/second',
+      name: 'viewProductCategoryPage',
+      path: '/products/:id',
       component: ProductsPage
     },
     {

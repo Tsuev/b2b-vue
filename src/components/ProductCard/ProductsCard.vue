@@ -1,11 +1,13 @@
 <template>
   <div class="col-12 col-md-6 col-lg-2">
     <div class="card">
-      <img
-        class="card-img-top"
-        :src="img"
-        alt="Unsplash"
-      />
+      <div class="p-4">
+        <img
+          class="card-img-top"
+          :src="'http://test.tk-badr.ru/' + img"
+          alt="Unsplash"
+        />
+      </div>
       <div class="card-header">
         <h5 class="card-title mb-0">{{ title }}</h5>
       </div>
@@ -13,7 +15,7 @@
         <p class="card-text">
             {{ title }}
         </p>
-        <a @click="handler" href="#" data-bs-toggle="modal" data-bs-target="#centeredModalPrimary" class="btn btn-primary">Подробнее</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#centeredModalPrimary" class="btn btn-primary mx-auto d-block">Подробнее</a>
       </div>
     </div>
   </div>
@@ -21,11 +23,6 @@
 
 <script>
 export default {
-    data(){
-      return {
-        data: this.arrayData
-      }
-    },
     props: {
         title:{
           type: String,
@@ -46,9 +43,7 @@ export default {
       },
 
       methods:{
-        handler(){
-          this.$emit('handler', this.data)
-        }
+
       }
 };
 </script>

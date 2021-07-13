@@ -13,7 +13,7 @@
             >
               <div class="simplebar-content" style="padding: 0px">
                 <!-- svelte-ignore a11y-missing-attribute -->
-                <a @click='$router.push("/")' class="sidebar-brand">
+                <a @click='$router.push({name: "home"})' class="sidebar-brand">
                   <img src="@/assets/img/logo.png" alt="" />
                 </a>
 
@@ -28,8 +28,8 @@
                     </a>
                   </li>
                   <li class="sidebar-header">Каталог</li>
-                  <li class="sidebar-item" v-for="categories in getCategories" :key="categories.username">
-                    <a @click="getNewCategories" class="sidebar-link">
+                  <li class="sidebar-item" v-for="categories in getCategories" :key="categories.ID">
+                    <a @click="getCategoryProducts(categories.ID); $router.push({name: 'viewProductCategoryPage', params: {id: categories.ID}})" class="sidebar-link">
                       <span class="align-middle">
                         {{ categories.NAME }}
                       </span>
@@ -74,8 +74,10 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     computed: mapGetters(['getMainTabs', 'getCategories']),
-    methods: mapActions(['getNewCategories']),
-    async mounted(){this.getNewCategories()}
+    methods: mapActions(['getCategoryProducts','getNewCategories']),
+    async mounted(){
+      this.getNewCategories()
+    }
 };
 </script>
 

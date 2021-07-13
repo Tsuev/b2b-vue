@@ -13,8 +13,8 @@ export default {
         }
     },
     actions: {
-        async getProducts(ctx){
-            const response = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=10')
+        async getCategoryProducts(ctx, productCategoryId){
+            const response = await fetch(`/api/products/?id=${productCategoryId}`, {headers:{'Authorization-Token': '9a68f80d-0f3c7c56-4733c445-8ae4f75b'}})
             const products = await response.json()
 
             ctx.commit('updateStateProducts', products)

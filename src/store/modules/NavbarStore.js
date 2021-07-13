@@ -31,7 +31,7 @@ export default {
 
   actions: {
     async getNewCategories(ctx){
-      const req = await fetch('http://localhost:8080/api/categories', {headers:{'Authorization-Token': '9a68f80d-0f3c7c56-4733c445-8ae4f75b'}})
+      const req = await fetch('/api/categories', {headers:{'Authorization-Token': '9a68f80d-0f3c7c56-4733c445-8ae4f75b'}})
       const categories = await req.json()
       console.log(categories);
       ctx.commit('updateCategories', categories)
