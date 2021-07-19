@@ -5,7 +5,9 @@
         <div class="main">
             <HeaderContainer/>
             <main class="content">
+              <transition name="fade" mode="out-in">
               <router-view/>
+              </transition>
             </main>
         </div>
     </div>
@@ -23,4 +25,15 @@
   }
 </script>
 
+<style>
+  .fade-enter-active,
+  .fade-leave-active{
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to{
+    opacity: 0;
+  }
+</style>
 

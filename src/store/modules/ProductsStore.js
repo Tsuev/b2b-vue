@@ -1,7 +1,10 @@
-export default {
+import httpClient from "../../helper/httpClient"
+
+ export default {
     state: {
         products: [],
-        activeProducts: []
+        activeProduct: [],
+        showPreloader: true
     },
     mutations: {
         updateStateProducts(state, products){
@@ -9,25 +12,26 @@ export default {
         },
 
         updateStateActiveProduct(state, activeProduct){
-            state.activeProducts = activeProduct
+            state.activeProduct = activeProduct
+        },
+
+        updatePreloderState(state, preloderNewState){
+            state.showPreloader = preloderNewState
         }
     },
     actions: {
-        async getCategoryProducts(ctx, productCategoryId){
-            const response = await fetch(`/api/products/?id=${productCategoryId}`, {headers:{'Authorization-Token': '9a68f80d-0f3c7c56-4733c445-8ae4f75b'}})
-            const products = await response.json()
-
-            ctx.commit('updateStateProducts', products)
+        getCategoryProducts(ctx, productCategoryId){
+            httpClient.get(ctx, `/api/products/?id=${productCategoryId}`, 'updateStateProducts')
+            ctx.commit('updatePreloderState', false)
         },
 
         getActiveProduct(ctx, activeProductId){
-            const activeProduct = this.state.products[activeProductId]
-            console.log(activeProduct)
-            ctx.commit('updateStateActiveProduct', activeProduct)
+            httpClient.get(ctx, `/api/products/view/?id=${activeProductId}`, 'updateStateActiveProduct')
         }
     },
     getters: {
         viewProducts(state){return state.products},
-        viewActiveProducts(state){return state.activeProducts}
+        viewActiveProducts(state){return state.activeProduct},
+        getPreloderState(state){return state.showPreloader}
     }
 }

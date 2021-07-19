@@ -1,6 +1,7 @@
 import VueRouter from "vue-router";
 import MainPage from '../pages/MainPage.vue'
 import ProductsPage from '../pages/ProductsPage.vue'
+import OrderPage from '../pages/OrderPage.vue'
 import ThirdPage from '../pages/ThirdPage.vue'
 
 export default new VueRouter({
@@ -19,6 +20,11 @@ export default new VueRouter({
     {
       path: '/third',
       component: ThirdPage
+    },
+    {
+      name: 'order',
+      path: '/orders',
+      component: OrderPage
     }
   ]
 })

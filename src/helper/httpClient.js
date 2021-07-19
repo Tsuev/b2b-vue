@@ -1,9 +1,9 @@
-export default   {
-    val: 0,
-    get: function (url) {
-        (async () => {
-            let response = await fetch(url,{headers:{'Authorization-Token':localStorage.getItem('token')}});
-            let data = await response.json();            
-        })();
-    }
-}
+export default {
+  get: async function(ctx, url, mutation) {
+    const response = await fetch(url, {
+      headers: { "Authorization-Token": localStorage.getItem("token") },
+    });
+    const data = await response.json();
+    ctx.commit(mutation, data)
+  },
+};

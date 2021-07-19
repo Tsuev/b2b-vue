@@ -20,7 +20,7 @@
                 <!-- Для того кто сел читать мой код, всё происходит здесь -->
                 <ul class="sidebar-nav mt-3">
                   <li class="sidebar-item" v-for="tabs in getMainTabs" :key="tabs.id">
-                    <a @click='$router.push(tabs.route)' class="sidebar-link">
+                    <a @click='$router.push({name: tabs.route})' class="sidebar-link">
                       <span v-html="tabs.icon"></span>
                       <span class="align-middle">
                         {{ tabs.title }}

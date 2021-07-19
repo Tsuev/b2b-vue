@@ -15,15 +15,20 @@
         <p class="card-text">
             {{ title }}
         </p>
-        <a href="#" data-bs-toggle="modal" data-bs-target="#centeredModalPrimary" class="btn btn-primary mx-auto d-block">Подробнее</a>
+        <a @click="getActiveProduct(id)" data-bs-toggle="modal" data-bs-target="#centeredModalPrimary" class="btn btn-primary mx-auto d-block">Подробнее</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     props: {
+        id: {
+          type: String,
+        },
         title:{
           type: String,
           required: true,
@@ -41,10 +46,7 @@ export default {
         } 
 
       },
-
-      methods:{
-
-      }
+      methods: mapActions(['getActiveProduct'])
 };
 </script>
 
